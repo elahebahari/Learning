@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+                <script src="bower_components/angular/angular.min.js" ></script>
+                <link href="bower_components/bootstrap/dist/css/bootstrap.min.css"  rel="stylesheet"  />
+                <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+                <script src="directiveController.js" ></script>
+		<link href="styleSheet.css" rel="stylesheet" />
+	</head>
+	<body ng-app='myApp'>
+		<form ng-controller='myCtrl'>
+			<div class='container'>
+				<table class="table table-striped">
+					<thead >
+						<tr >
+							<th>#</th>
+							<th>FullName</th>
+							<th>Age</th>
+						</tr>
+					</thead>
+					<tbody >
+						<tr ng-repeat='item in users'>
+							<th  scope="row">{{item.number}}</th>
+							<td >{{item.fullName}}</td>
+							<td >{{item.age}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<business-Heading></business-Heading>
+				<p bt-tooltip='This is a tooltip'>some tooltip here</p>
+			</div>
+		</form>
+	</body>
+</html>
+       
