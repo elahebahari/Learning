@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js" ></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js" ></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css"  rel="stylesheet"  />
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="bower_components/angular-elastic/elastic.js"></script>
+		<script src="bower_components/bootstrap-select/bootstrap-select.min.js"></script>
+	  <link href="bower_components/bootstrap-select/bootstrap-select.min.css"  rel="stylesheet"/>
+		<script src="bower_components/angular-bootstrap-select/build/angular-bootstrap-select.min.js"></script>
+    <script src="formValidationController.js" ></script>
+    <link href="styleSheet.css" rel="stylesheet"/>
+  </head>
+  <body ng-app="myApp">
+    <form ng-controller="myCtrl" name="userInfo" novalidate>
+      <div class="container">
+        <div class="row form-group">
+          <div class="col-md-2"><label>Full Name:</label>  </div>
+          <div class="col-md-4"><input type="text" name="fullName" ng-model='fullName' required></input></div>
+          <div class="col-md-6">
+            <span style="color:red;" ng-if="userInfo.fullName.$invalid && userInfo.fullName.$dirty"> The User's Name Is Required</span>
+            <span style="color:#66ff33;" ng-if="userInfo.fullName.$valid" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-2"><label>Password:</label></div>
+          <div class="col-md-4"><input type="password" name="password" ng-model='password' required></input></div>
+          <div class="col-md-6">
+            <span style="color:red;" ng-if="userInfo.password.$invalid && userInfo.password.$dirty"> The User's Password Is Required</span>
+            <span style="color:#66ff33;" ng-if="userInfo.password.$valid" class="glyphicon glyphicon-ok" aria-hidden="true" > </span>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-2"><label>About me:</label></div>
+          <div class="col-md-4"><textarea class="msd-elastic"  required  name='aboutMe'  ng-model='aboutMe'></textarea></div>
+          <div class="col-md-6">
+            <span style="color:red;" ng-if="userInfo.aboutMe.$invalid && userInfo.aboutMe.$dirty"> The User's AboutMe is required </span>
+            <span style="color:#66ff33;" ng-if="userInfo.aboutMe.$valid" class="glyphicon glyphicon-ok" aria-hidden="true" > </span>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-2"><label>Country:</label></div>
+          <div class="col-md-4">
+            <select ng-model="countrySelected" id="countrySelected" name="countrySelected" required class="selectpicker">
+              <option selected   value="">Select Country</option>
+              <option ng-repeat="x in country" ng-model="x.Id" value='x.Id'>{{x.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <span style="color:red" ng-if="userInfo.countrySelected.$invalid && userInfo.countrySelected.$dirty">
+              <span >Country Is Required</span>
+            </span>
+            <span style="color:#66ff33;" ng-if="userInfo.countrySelected.$valid" class="glyphicon glyphicon-ok" aria-hidden="true" ></span>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-2"><label>Favorites:</label></div>
+          <div class="col-md-4  HorizontGroup" >
+            <label ng-repeat="item in favorites"  >
+              <input name="favoritesGroup"  type="checkbox" ng-value="item.Id" ng-model="item.checked" ng-click="favoriteSelected($index,favorites)" ng-required="!isfavoritesSelected(favorites)"</input>
+             {{item.label}}
+           </label>
+          </div>
+          <div class="col-md-6">
+           <span style="color:red" ng-if="userInfo.favoritesGroup.$invalid && userInfo.favoritesGroup.$dirty">
+              <span>Favorites Is Required</span>
+              <span style="color:#66ff33;" ng-if="!userInfo.favoritesGroup.$invalid" class="glyphicon glyphicon-ok" aria-hidden="true" > </span>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-2"><label>Gender:</label></div>
+          <div class="col-md-4 HorizontGroup" >
+            <label ng-repeat="item in gender">
+              <input name="genderGroup"  type="radio" ng-rquired="!item.Id"  ng-model="item.Id" ></input>
+              {{item.Text}}
+            </label>
+          </div>
+          <div class="col-md-6">
+            <span style="color:red" ng-if="userInfo.genderGroup.$invalid">
+              <span>Gender Is Required</span>
+              <span style="color:#66ff33;" ng-if="!item.Id"class="glyphicon glyphicon-ok" aria-hidden="true" > </span>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-2 form-group">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"  ng-disabled="userInfo.$invalid && !userInfo.$untouched">submit</button>
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <h1 class="modalBox">Thanks for filling out our form</h1>
+                </div>
+              </div>
+            </div>
+            <!--<button type="button" class="btn btn-default" ng-click="submitClick()" ng-disabled="userInfo.$invalid">submit</button>-->
+            <!--<input type="submit" ng-click="submitClick() class="btn btn-default"></input>-->
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
