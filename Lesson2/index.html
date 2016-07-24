@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css"  rel="stylesheet"/>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="controller.js"></script>
+    <link href="styleSheet.css" rel="stylesheet"/>
+  </head>
+  <body ng-app="myApp">
+    <div ng-controller="myCtrl" class="countainer">
+      <div>
+        <h3 class="">Please Write Your Name In The Box</h3> 
+        <input type="text" ng-model="TYPED_NAME"></input>
+      </div>
+      <div class="controlRegion">
+        <span ng-hide="hidespan()" > Hello {{TYPED_NAME}} from Angular</span>
+     </div>
+    </div>
+  </body>
+</html>

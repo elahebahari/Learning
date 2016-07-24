@@ -1,0 +1,30 @@
+input{
+  padding: 0.5%;
+  background-color: darkorange;
+  color:white;
+  font-size:14px;
+  width: 300px;
+  height: 35px;
+  font-weight: bold;
+}
+span{
+  padding: 0.5%;
+  background-color:blue;
+  color: white;
+  font-weight:bold;
+  font-size:14px;
+  width: 300px;
+  height: 35px;
+}
+h1,h2,h3,h4,h5,h6{
+  margin: 2px;
+  color:black;
+}
+body{
+  background-color: darkgrey;
+  margin: 2%;
+}
+.controlRegion{
+  margin-top:25px;
+}
+
