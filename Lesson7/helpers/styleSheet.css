@@ -1,0 +1,18 @@
+body{
+  background-color:pink;
+  font-size:16px;
+  padding:1%;
+}
+input{
+  background-color:silver;
+  border:1px solid black;
+  width:360px;
+  height:35px;
+}
+h1,h2,input{
+  color:white
+}
+h2:hover{
+  color:powderblue;
+}
+
