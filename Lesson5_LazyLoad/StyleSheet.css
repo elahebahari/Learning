@@ -1,0 +1,17 @@
+body{
+  background-color: black;
+  color: red;
+}
+ul{
+  color: white;
+  background-color:black;
+}
+a{
+  color: white;
+  font-size: 16;
+  font-weight: bolder;
+}
+a:hover{
+  background-color:white !important;
+  color:black !important;
+}
