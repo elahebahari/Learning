@@ -1,0 +1,22 @@
+<form ng-controller='myCtrl'>
+	<div class='container'>
+		<table class="table table-striped">
+			<thead >
+				<tr >
+					<th>#</th>
+					<th>FullName</th>
+					<th>Age</th>
+				</tr>
+			</thead>
+			<tbody >
+				<tr ng-repeat='item in users'>
+					<th  scope="row">{{item.number}}</th>
+					<td >{{item.fullName}}</td>
+					<td >{{item.age}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<business-Heading></business-Heading>
+		<p bt-tooltip='This is a tooltip'>some tooltip here</p>
+	</div>
+</form>       

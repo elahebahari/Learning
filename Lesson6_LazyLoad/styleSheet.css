@@ -1,0 +1,41 @@
+body{
+	margin: 1%;
+	background-color: white;
+}
+tbody
+{
+	border-style: double;
+}
+th,td	
+{
+	width:25%;
+	text-align:center;
+	color:white;
+}
+thead
+{
+	border-style: double;
+	background-color: black;
+	color: white;
+}   
+table tbody
+{
+	font-size: 16px;
+	font-weight: bold;
+}
+table tbody tr:nth-child(odd) td 
+{
+	background-color: forestgreen;
+}
+table tbody tr:nth-child(even) td
+{
+	background-color: darkred ;
+}
+table tbody tr:nth-child(odd) th
+{
+	background-color:forestgreen;
+}
+table tbody  tr:nth-child(even) th
+{
+	background-color: darkred;
+}
