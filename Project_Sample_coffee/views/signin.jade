@@ -1,0 +1,31 @@
+form(name='userInfo', novalidate='')
+  div(ng-controller="signinController" class='marginVert')
+    div(class='panel panel-primary Panelmargin panelSize') 
+      div(class='panel-heading')
+        h3(class='panel-title') Please signin
+      div(class='panel-body')
+        div(class='row rowHeight paddingLeftDiv')
+          div(class='col-md-2 PaddingRightControl')
+            span(class='floatRight textwhite') Email:
+          div(class='col-md-10 paddingLeftDiv paddingRightDiv')
+            div(class='widthControl input-group')
+              input(type='text' required  ng-model='emailModel' class='form-control' placeholder="your Id" aria-describedby="email")
+              span(class='input-group-addon' id='email') @house.com
+        div(class='row rowHeight paddingLeftDiv')
+          div(class='col-md-2 PaddingRightControl')
+            span(class='floatRight textwhite ') Password:
+          div(class='col-md-10 ')
+            input(type='password' required  ng-model='passModel' class='form-control widthControl' placeholder='Password')
+        div(class='row paddingLeftDiv rowHeight')
+          button(class='btn regbtn widthControl' ng-click='signin()' ng-disabled='userInfo.$invalid && !userInfo.$untouched') signin 
+        .row.paddingLeftDiv.rowHeight
+          span(class='error' ng-show='show_error') the user name or password is wrong
+        .row.paddingLeftDiv.rowHeight
+          .col-md-2
+          .col-md-4
+            button(class='btn regbtn widthControl' ng-click='signUp()') signup 
+          .col-md-4
+            button(class='btn regbtn widthControl' ng-click='forgot()') forgot? 
+          .col-md-2
+ 
+

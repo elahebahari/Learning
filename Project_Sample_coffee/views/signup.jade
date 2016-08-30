@@ -1,0 +1,68 @@
+form(ng-controller='signupController', name='userInfo', novalidate='',class='marginVert')
+  .container.validate
+    .row.form-group
+      .col-md-2
+        label Full Name:
+      .col-md-4
+        input(type='text', name='fullName', ng-model='fullName', required='')
+      .col-md-6
+        span(style='color:red;', ng-if='userInfo.fullName.$invalid && userInfo.fullName.$dirty')  The User's Name Is Required
+        span.glyphicon.glyphicon-ok(style='color:#66ff33;', ng-if='userInfo.fullName.$valid', aria-hidden='true')
+    .row.form-group
+      .col-md-2
+        label Password:
+      .col-md-4
+        input(type='password', name='password', ng-model='password', required='')
+      .col-md-6
+        span(style='color:red;', ng-if='userInfo.password.$invalid && userInfo.password.$dirty')  The User's Password Is Required
+        span.glyphicon.glyphicon-ok(style='color:#66ff33;', ng-if='userInfo.password.$valid', aria-hidden='true')  
+    .row.form-group
+      .col-md-2
+        label About me:
+      .col-md-4
+        textarea.msd-elastic(required='', name='aboutMe', ng-model='aboutMe')
+      .col-md-6
+        span(style='color:red;', ng-if='userInfo.aboutMe.$invalid && userInfo.aboutMe.$dirty')  The User's AboutMe is required 
+        span.glyphicon.glyphicon-ok(style='color:#66ff33;', ng-if='userInfo.aboutMe.$valid', aria-hidden='true')  
+    .row.form-group
+      .col-md-2
+        label Country:
+      .col-md-4
+        select#countrySelected.selectpicker(ng-model='countrySelected', name='countrySelected', required='')
+          option(selected='', value='') Select Country
+          option(ng-repeat='x in country', ng-model='x.Id', value='x.Id') {{x.name}}
+      .col-md-6
+        span(style='color:red', ng-if='userInfo.countrySelected.$invalid && userInfo.countrySelected.$dirty')
+          span Country Is Required
+        span.glyphicon.glyphicon-ok(style='color:#66ff33;', ng-if='userInfo.countrySelected.$valid', aria-hidden='true')
+    .row.form-group
+      .col-md-2
+        label Favorites:
+      .col-md-4.HorizontGroup
+        label(ng-repeat='item in favorites')
+          input(name='favoritesGroup', type='checkbox', ng-value='item.Id', ng-model='item.checked', ng-click='favoriteSelected($index,favorites)', ng-required='!isfavoritesSelected(favorites)')
+          |           {{item.label}}
+      .col-md-6
+        span(style='color:red', ng-if='userInfo.favoritesGroup.$invalid && userInfo.favoritesGroup.$dirty')
+          span Favorites Is Required
+          span.glyphicon.glyphicon-ok(style='color:#66ff33;', ng-if='!userInfo.favoritesGroup.$invalid', aria-hidden='true')  
+    .row.form-group
+      .col-md-2
+        label Gender:
+      .col-md-4.HorizontGroup
+        label(ng-repeat='item in gender')
+          input(name='genderGroup', type='radio', ng-rquired='!item.Id', ng-model='item.Id')
+          |           {{item.Text}}
+      .col-md-6
+        span(style='color:red', ng-if='userInfo.genderGroup.$invalid')
+          span Gender Is Required
+          span.glyphicon.glyphicon-ok(style='color:#66ff33;', ng-if='!item.Id', aria-hidden='true')  
+    .row.form-group
+      .col-md-2.form-group
+        button(class='btn regbtn widthControl'  ng-disabled='userInfo.$invalid && !userInfo.$untouched',ng-click="submitClick()") submit
+        // button.btn.btn-primary(type='button', ng-disabled='userInfo.$invalid && !userInfo.$untouched',ng-click="submitClick()") submit
+        // <button type="button" class="btn btn-default" ng-click="submitClick()" ng-disabled="userInfo.$invalid">submit</button>
+        // <input type="submit" ng-click="submitClick() class="btn btn-default"></input>
+
+
+
